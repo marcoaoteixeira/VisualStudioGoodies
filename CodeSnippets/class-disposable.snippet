@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Disposable Class</Title>
+			<Shortcut>class_disposable</Shortcut>
+			<Description>Code snippet for class with implemented disposable interface.</Description>
+			<Author>Marco Antonio Orestes Teixeira</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>Class name</ToolTip>
+					<Default>MyClass</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[
+			public class $name$ : IDisposable
+			{
+				#region Private Fields
+
+				private bool _disposed;
+
+				#endregion Private Fields
+
+				#region Destructor
+
+				/// <summary>
+				/// Destructor
+				/// </summary>
+				~$name$() {
+					Dispose(disposing: false);
+				}
+
+				#endregion Destructor
+
+				#region Protected Virtual Methods
+
+				/// <summary>
+				/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+				/// </summary>
+				/// <param name="disposing"><c>true</c> if called from managed code; otherwise <c>false</c>.</param>
+				protected virtual void Dispose(bool disposing) {
+					if (_disposed) { return; }
+					if (disposing) {
+						// Dispose your managed resources here
+					}
+
+					// Dispose your unmanaged resources here
+
+					_disposed = true;
+				}
+
+				#endregion Protected Virtual Methods
+
+				#region Protected Methods
+
+				protected void ThrowIfDisposed() {
+					if (_disposed) {
+						throw new ObjectDisposedException(nameof($name$));
+					}
+				}
+
+				#endregion Protected Methods
+
+				#region IDisposable Members
+
+				/// <inheritdoc />
+				public void Dispose() {
+					Dispose(disposing: true);
+					GC.SuppressFinalize(this);
+				}
+
+				#endregion IDisposable Members$selected$$end$
+			}
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Null Object Pattern Class</Title>
+			<Shortcut>class_null_pattern</Shortcut>
+			<Description>Code snippet for class that implements the Null Object Pattern. (see: https://en.wikipedia.org/wiki/Null_Object_pattern)</Description>
+			<Author>Marco Antonio Orestes Teixeira</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>Class name</ToolTip>
+					<Default>MyClass</Default>
+				</Literal>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Implementation type</ToolTip>
+					<Default>MyImplementation</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[
+			/// <summary>
+			/// Null Object Pattern implementation for I$type$. (see: https://en.wikipedia.org/wiki/Null_Object_pattern)
+			/// </summary>
+			public sealed class Null$name$ : I$type$
+			{
+				#region Private Static Read-Only Fields
+
+				private static readonly I$type$ _instance = new Null$name$();
+
+				#endregion Private Static Read-Only Fields
+
+				#region Public Static Properties
+
+				/// <summary>
+				/// Gets the unique instance of Null$name$.
+				/// </summary>
+				public static I$type$ Instance {
+					get { return _instance; }
+				}
+
+				#endregion Public Static Properties
+
+				#region Static Constructors
+
+				// Explicit static constructor to tell the C# compiler
+				// not to mark type as beforefieldinit
+				static Null$name$() {
+				}
+
+				#endregion Static Constructors
+
+				#region Private Constructors
+
+				// Prevents the class from being constructed.
+				private Null$name$() {
+				}
+
+				#endregion Private Constructors
+
+				#region I$type$ Members
+
+				// Implementation here
+
+				#endregion I$type$ Members
+			}$end$
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

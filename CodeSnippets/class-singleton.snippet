@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Singleton Class</Title>
+			<Shortcut>class_singleton</Shortcut>
+			<Description>Code snippet for class that implements the Singleton Pattern. (see: https://en.wikipedia.org/wiki/Singleton_pattern)</Description>
+			<Author>Marco Antonio Orestes Teixeira</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>Class name</ToolTip>
+					<Default>MyClass</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[
+			/// <summary>
+			/// WRITE YOUR DOCUMENTATION SUMMARY HERE.
+			///
+			/// Singleton Pattern implementation for $name$. (see: https://en.wikipedia.org/wiki/Singleton_pattern)
+			/// </summary>
+			public sealed class $name$
+			{
+				#region Private Static Read-Only Fields
+
+				private static readonly $name$ _instance = new $name$();
+
+				#endregion Private Static Read-Only Fields
+
+				#region Public Static Properties
+
+				/// <summary>
+				/// Gets the unique instance of $name$.
+				/// </summary>
+				public static $name$ Instance {
+					get { return _instance; }
+				}
+
+				#endregion Public Static Properties
+
+				#region Static Constructors
+
+				// Explicit static constructor to tell the C# compiler
+				// not to mark type as beforefieldinit
+				static $name$() {
+				}
+
+				#endregion Static Constructors
+
+				#region Private Constructors
+
+				private $name$() {
+				}
+
+				#endregion Private Constructors
+			}$end$
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
